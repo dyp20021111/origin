@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper为映射的根节点-->
+<!-- mapper为映射的根节点，namespace指定Dao接口的完整类名
+     mybatis会依据这个接口动态创建一个实现类去实现这个接口，
+     而这个实现类是一个Mapper对象-->
+<mapper namespace="com.itheima.pojo.c_course">
+    <!--id ="接口中的方法名"
+    resultType ="返回实体类对象，使用包.类名"-->
+    <select id="findById" parameterType="String" resultType="com.itheima.pojo.c_course">
+        select  * from s_student where id =#{id}
+    </select>
+    <select id="dgg" parameterType="String" resultType="com.itheima.pojo.c_course">
+        select  * from s_student,s_school where s_student.sid=s_school.id and
+                                                s_school.schoolname=#{name}
+    </select>
+
+    <update id="updateUser" parameterType="com.itheima.pojo.c_course" >
+        update s_student set hours= hours+#{hours} where id=#{id}
+    </update>
+
+    <insert id="addUser" parameterType="com.itheima.pojo.c_course">
+        insert into s_student(name,hours,sid)values(#{name},#{hours},#{schools})
+    </insert>
+
+    <select id="dypp" parameterType="String" resultType="com.itheima.pojo.c_course">
+        select  * from s_student,s_school where s_student.sid=s_school.id
+
+    </select>
+
+
+
+</mapper>
+
+
+
+
